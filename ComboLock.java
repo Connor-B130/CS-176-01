@@ -17,7 +17,7 @@ public class ComboLock
 	public void reset() 
 	{
 		index = 0;
-		numsEnter = new int[] {0, 0, 0};
+		numsEnter = new int[] {-1, -1, -1};
 	}
 	
 	public void tickLeft(int tick) 
@@ -32,24 +32,23 @@ public class ComboLock
 	
 	public void tickRight(int tick) 
 	{	
-		if(numsEnter[0] == 0)
+		if(numsEnter[0] == -1)
 		{
 			index += tick;
 			numsEnter[0] = index;
 		}
-		else if(numsEnter[0] != 0 && numsEnter[2] == 0)
+		else if(numsEnter[0] != -1 && numsEnter[2] == -1)
 		{
 			index += tick;
 			if(index > 39)
 			{
-				index = (0 + (index - 39));
+				index = (0 + (39 - index));
 				numsEnter[2] = index;
 			}
 			else
 			{
 				numsEnter[2] = index;
-			}
-				
+			}	
 		}
 	}
 	
